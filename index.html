@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Mobile</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      font-family: "Dancing Script", cursive;
+      font-size: 18px;
+    }
+    
+    p {
+      z-index: 1;
+      word-spacing: 0.6em;
+    }
+    /* Área principal com proporção de celular */
+    .app {
+      width: min(100vw, calc(100vh * 9 / 16));
+      height: min(100vh, calc(100vw * 16 / 9));    
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 16px;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    img {
+      width: min(100vw, calc(100vh * 9 / 16));
+      height: min(100vh, calc(100vw * 16 / 9));  
+      z-index: -1;
+      border-radius: 6px;
+      position: absolute;
+
+      object-fit: cover;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(2.25rem, 1vw, 2.25rem);
+    }
+    #isqueiro {
+    width: 19%;
+    height: 19%;
+    bottom: 4%;
+    left: 12%;
+    position: absolute;
+    transition: all 1s;
+    z-index: 99999;
+    }
+    #isqueiro:hover {
+    rotate: 15deg;
+    transition: all 1s;
+    }
+    #papel {
+      opacity: 0;
+      transition: all 5.5s;
+    }
+    #titulo {
+      opacity: 0;
+      transition: all 5.5s;
+    }
+    #fim {
+      opacity: 0;
+      transition: all 5.5s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <h1 id="titulo">Feliz aniversario
+    </h1>
+
+    <p id="papel">A algum tempo atrás nos encontramos e foi muito bom, porém cometi erros devido a minha maturidade mal formada, e isso gerou algo ruim dentro de você a meu respeito, mas então, eu amadureci pq é o que acontece com as pessoas, dentro disso eu quero esclarecer que na época eu era infantil e imaturo para ter você na minha vida, contudo, entendi que você foi uma das melhores pessoas que passaram pela minha vida no ano de 2024 e bom, queria tê-la comigo novamente, e agradeço a Deus por ter conseguido. <br>
+Dito isso, quero que saiba que amo você imensamente, sempre senti algo por você mesmo estando longe, e quando voltei pra junto d evoce pude me sentir completo novamente, você se tornou um acontecimento unicamente exclusivo para mim nesses últimos tempos, e algo bom, você me deixa feliz e consegue me fazer sorrir bem fácil, <br> cê desperta um lado em que, eu já considerava morto a um bom tempo, mas você me provou que não, e que ainda há em mim, sou grato por ter você na minha vida e pretendo estender esses dias até a minha morte lhe tornando minha esposa, esse é meu plano e desejo quando se trata de você, eu te amo Letícia você é meu maior tesouro de vida</p>
+          <img src="./images/background10526880.png" alt="">
+<br>
+    <h2 id="fim">Te amo</h2>
+
+      <img id="isqueiro" src="./images/isqueiro_apagado-removebg-preview.png" alt="">
+  </div>
+  
+<script>
+  const isqueiro = document.getElementById("isqueiro");
+  const papel = document.getElementById("papel")
+  const titulo = document.getElementById("titulo")
+  const fim = document.getElementById("fim")
+
+  const imgApagado = "./images/isqueiro_apagado-removebg-preview.png";
+  const imgAceso = "./images/isqueiro.png";
+
+  let timeout = null;
+
+  isqueiro.addEventListener("click", () => {
+    // evita múltiplos cliques acumularem timers
+    if (timeout) return;
+    papel.style.opacity = "1"
+    titulo.style.opacity = "1"
+    fim.style.opacity = "1"
+    isqueiro.src = imgAceso;
+
+    timeout = setTimeout(() => {
+      isqueiro.src = imgApagado;
+      isqueiro.style.opacity = "0"
+      timeout = null;
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
